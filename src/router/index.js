@@ -9,6 +9,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/backTopOne',
+    name: 'backTopOne',
+    //异步加载，不使用不加载
+    component: ()=> import('../views/BackTopOne')
   }
 ]
 

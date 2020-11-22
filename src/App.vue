@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-view/>
+    <back-top>
+      <router-view/>
+    </back-top>
   </div>
 </template>
 
