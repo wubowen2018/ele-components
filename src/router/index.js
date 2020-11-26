@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: ()=> import('../views/Login.vue')
+  },
+  {
     path: '/backTopOne',
     name: 'backTopOne',
     //异步加载，不使用不加载
