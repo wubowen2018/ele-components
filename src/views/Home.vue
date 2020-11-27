@@ -2,6 +2,7 @@
     <div class="homeDiv">
         <el-button type='primary' @click="goTo('/backTopOne')">去往页面1</el-button>
         <el-button type='primary' @click="goTo('/login')">登录</el-button>
+        <el-button type='primary' @click="goTo('/puzzle')">拼图</el-button>
     </div>
 </template>
 

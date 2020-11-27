@@ -16,6 +16,11 @@ const routes = [
     component: ()=> import('../views/Login.vue')
   },
   {
+    path: '/puzzle',
+    name: 'Puzzle',
+    component: ()=> import('../views/showPuzzle.vue')
+  },
+  {
     path: '/backTopOne',
     name: 'backTopOne',
     //异步加载，不使用不加载
