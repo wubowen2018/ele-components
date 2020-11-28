@@ -1,15 +1,17 @@
 <template>
     <div class="wraper">
-        <div class="content">
+        <div class="box">
             <d-puzzle 
+                class="puzzleContent"
                 @next="handleNext"
                 v-bind="puzzleConfig[level]">
             </d-puzzle>
         </div>
-        <div class="box">
-            <el-button type="primary" @click="preLevel">上一关</el-button>
-            <el-button type="primary" @click="handleNext">下一关</el-button>
+        <div class="boxBtn">
+            <el-button type="primary" class="btn1" @click="preLevel">上一关</el-button>
+            <el-button type="primary" class="btn2" @click="handleNext">下一关</el-button>
         </div>
+        <img :src="puzzleConfig[level].img" class="imgDiv" />
     </div>
 </template>
 
@@ -21,8 +23,9 @@ export default {
             level: 0,
             puzzleConfig: [
                 { row: 3, col: 3, img: './01.jpg' },
-                { row: 4, col: 4, img: './01.jpg' },
-                { row: 5, col: 5, img: './01.jpg' }
+                { row: 4, col: 4, img: './02.jpg' },
+                { row: 5, col: 5, img: './03.jpg' },
+                { row: 6, col: 6, img: './04.jpg' }
             ]
         }
     },
@@ -35,6 +38,8 @@ export default {
                 const answerFlag = window.confirm('已经是最后一关了，要重新开始吗？')
                 if ( answerFlag ) {
                     this.level = 0
+                } else {
+                    this.level = this.level - 1
                 }
             }
         },
@@ -52,14 +57,40 @@ export default {
 </script>
 <style lang="less" scoped>
     .wraper{
-
-        position:absolute;
-        margin-top: 30px;
-        margin-left: 30px;
-      
-
-        .box{
-            margin-top: 30px;
+        height: 100%;
+        width: 100%;
+    }
+    .box{
+        position: relative;
+        width: 100%
+    }
+    .puzzleContent{
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        margin-left: -250px;
+    }
+    .boxBtn{
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        margin-top: 560px;
+        left: 50%;
+        margin-left: -250px;
+        .btn1{
+            position: absolute;
+            left: 15px;
         }
+        .btn2{
+            position: absolute;
+            right: 15px;
+        }
+    }
+    .imgDiv{
+        position: absolute;
+        top: 30px;
+        width: 200px;
+        height: 200px;
+        left: 10px;;
     }
 </style>

@@ -81,7 +81,6 @@ export default {
 </script>
 <style lang="less" scoped>
     .wraper{
-        
         margin-left: 30px;
         margin-top: 30px;
         .acccount,.phoneLogin{
