@@ -6,6 +6,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 /**自动引入全局组件 */
 import './globalComponents'
 
+import axios from 'axios'
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = '/api'
+
+Vue.use(ElementUi)
+Vue.config.productionTip = false
+
 //全局指令 局部指令在vue实例中用 directives 声明
 Vue.directive('loading', {
   //这个方法会被调用两次 
@@ -34,8 +41,6 @@ Vue.directive('loading', {
   }
 })
 
-Vue.use(ElementUi)
-Vue.config.productionTip = false
 
 new Vue({
   router,

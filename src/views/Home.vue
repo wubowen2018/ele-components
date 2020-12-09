@@ -14,7 +14,10 @@ export default {
         goTo( path ) {
             this.$router.push(path)
         }
-    }
+    },
+    mounted() {
+        
+    },
 
 }
 </script>
