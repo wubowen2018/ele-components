@@ -21,6 +21,11 @@ const routes = [
     component: ()=> import('../views/showPuzzle.vue')
   },
   {
+    path: '/axios',
+    name: 'axios',
+    component: () => import('../views/axios.vue')
+  },
+  {
     path: '/backTopOne',
     name: 'backTopOne',
     //异步加载，不使用不加载

@@ -9,7 +9,7 @@ module.exports = {
         hotOnly: false,
         proxy: {
             '/api': {
-                target: "http://app.rmsdmedia.com",
+                target: "127.0.0.1:3000",
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: {
