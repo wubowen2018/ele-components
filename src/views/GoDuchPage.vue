@@ -17,13 +17,11 @@ export default {
         {
           name: '',
           money: '',
-          show: true,
           id: 0
         },
         {
           name: '',
           money: '',
-          show: true,
           id: 1
 
         }
