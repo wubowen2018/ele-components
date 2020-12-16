@@ -26,6 +26,11 @@ const routes = [
     component: () => import('../views/axios.vue')
   },
   {
+    path: '/goduch',
+    name: 'Goduch',
+    component: () => import('../views/GoDuchPage.vue')
+  },
+  {
     path: '/backTopOne',
     name: 'backTopOne',
     //异步加载，不使用不加载

@@ -4,6 +4,7 @@
         <el-button type='primary' @click="goTo('/login')">登录</el-button>
         <el-button type='primary' @click="goTo('/puzzle')">拼图</el-button>
         <el-button type='primary' @click="goTo('/axios')">axios</el-button>
+        <el-button type='primary' @click="goTo('/goduch')">AA计算器</el-button>
     </div>
 </template>
 
