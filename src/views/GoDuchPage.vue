@@ -2,7 +2,6 @@
   <div class="wraper">
     <h2>AA计算器</h2>
     <go-duch
-      :memForm="memForm"
       class="content">
 
     </go-duch>
@@ -13,19 +12,7 @@
 export default {
   data () {
     return {
-      memForm:[
-        {
-          name: '',
-          money: '',
-          id: 0
-        },
-        {
-          name: '',
-          money: '',
-          id: 1
-
-        }
-      ]    
+   
     }
   },
 

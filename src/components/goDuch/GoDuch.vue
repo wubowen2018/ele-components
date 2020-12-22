@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form v-model="memberForm" :rules="rules">
-        <el-row :gutter="18" v-for="(item,index) in memberForm" :key="item.id">
+        <el-row :gutter="18" v-for="(item,index) in memberForm.memList" :key="item.id">
           <el-col :span="8">
             <el-form-item prop="name">
               <el-input placeholder="好友姓名" v-model="item.name" clearable>
@@ -79,19 +79,29 @@ export default {
           { validator: checkMoney, trigger: 'blur' }
         ]
       },
-      memberForm: [] ,
+      memberForm: {
+        memList: [
+          {
+            name: '',
+            money: '',
+            id: 0
+          },
+          {
+            name: '',
+            money: '',
+            id: 1
+
+          }
+        ] 
+      },
       disabled: true,
       undisabled: false
     };
   },
   props: {
-    memForm: {
-      type: Array,
-      required: true
-    }
-
+    
   },
-  mounted() {
+  created() {
     this.memberForm = this.memForm
     // console.log(this.memberForm);
   },
