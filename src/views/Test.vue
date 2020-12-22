@@ -1,6 +1,6 @@
 <template>
     <div class="wraper">
-        <el-form :model="form" ref="ruleForm" label-width="100px">
+        <el-form :model="form" ref="ruleForm" label-width="80px">
             <el-form-item label="活动列表">
                 <el-row v-for="(item, index) in form.activities" :key="index" style="margin-bottom: 20px;">
                     <el-col :span="11">
@@ -48,21 +48,21 @@
     },
     methods: {
         submitForm (formName) {
-        this.$refs[formName].validate((valid) => {
-            if (!valid) return console.log('未通过校验')
-        })
+            this.$refs[formName].validate((valid) => {
+                if (!valid) return console.log('未通过校验')
+            })
         },
         addItem () {
-        this.form.activities.push({
-            name: '',
-            content: ''
-        })
+            this.form.activities.push({
+                name: '',
+                content: ''
+            })
         },
         removeItem (index) {
-        this.form.activities.splice(index, 1)
+            this.form.activities.splice(index, 1)
         },
         resetForm (formName) {
-        this.$refs[formName].resetFields()
+            this.$refs[formName].resetFields()
         }
     }
 }

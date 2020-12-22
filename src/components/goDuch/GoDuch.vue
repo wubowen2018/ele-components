@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-form v-model="memberForm" :rules="rules">
-        <el-row :gutter="18" v-for="(item,index) in memberForm.memList" :key="item.id">
+    <el-form :model="memberForm" :ref="memberForm" >
+        <el-row :gutter="18" v-for="(item,index) in memberForm.memList" :key="index">
           <el-col :span="8">
-            <el-form-item prop="name">
+            <el-form-item :prop="`memList.${index}.name`" :rules="rules.name">
               <el-input placeholder="好友姓名" v-model="item.name" clearable>
                 <i slot="prefix" class="el-icon-user"></i>
               </el-input> 
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item prop="money">
+            <el-form-item :prop="`memList.${index}.money`" :rules="rules.money">
               <el-input placeholder="支付金额" v-model="item.money" clearable>
                 <i slot="prefix" class="el-icon-coin"></i>
               </el-input>
@@ -62,38 +62,31 @@ export default {
   data () {
     let checkMoney = ( rule, value,callback ) => {
       let reg = /\d+[\.]?\d+$/
-      if ( reg.test(value) ) {
-          callback()
-      } else {
-        if ( !value ) {
+      if ( !value ) {
+        return callback( new Error('请输入支付金额'))
+      }else {
+        if ( !reg.test(value) ) {
           return callback( new Error('请输入正确的支付金额'))
+        } else {
+          callback()
         }
       }
     }
     return {
-      rules: {
-        name: [
-          { required: true, message: '好友姓名不可为空', trigger: 'blur' }
-        ],
-        money: [
-          { validator: checkMoney, trigger: 'blur' }
-        ]
-      },
       memberForm: {
         memList: [
-          {
-            name: '',
-            money: '',
-            id: 0
-          },
-          {
-            name: '',
-            money: '',
-            id: 1
-
-          }
+          {name: '', money: ''},
+          {name: '',money: ''}
         ] 
       },
+      rules: {
+        name: [
+          { required: true, message: '好友姓名不可为空', trigger: 'blur' },
+          {min: 2,max: 6,message: '好友姓名在2-6个字符之间',trigger: 'blur'}
+        ],
+        money: [{ validator: checkMoney, trigger: 'blur' }]
+      },
+
       disabled: true,
       undisabled: false
     };
@@ -102,35 +95,34 @@ export default {
     
   },
   created() {
-    this.memberForm = this.memForm
+    // this.memberForm = this.memForm
     // console.log(this.memberForm);
   },
 
   methods: {
     delMem(index){
-      const memberForm = this.memberForm
-      memberForm.splice( index, 1 )
+      const memList = this.memberForm.memList
+      memList.splice( index, 1 )
       this.$message.success("success")
     },
     addMem(){
-      const memberForm = this.memberForm
-      let length = memberForm.length
-      memberForm.push({
+      const memList = this.memberForm.memList
+      let length = memList.length
+      memList.push({
           name: '',
           money: '',
-          id: length
       })
     },
     allReset(){
-      const memberForm = this.memberForm
-      memberForm.forEach(item => {
+      const memList = this.memberForm.memList
+      memList.forEach(item => {
         item.name = ''
         item.money = ''
       });
     },
     getFair(){
-      const memberForm = this.memberForm
-      console.log(memberForm);
+      const memList = this.memberForm.memList
+      console.log(memList);
     }
 
   }
