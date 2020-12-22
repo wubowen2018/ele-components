@@ -5,6 +5,8 @@ import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css' 
 /**自动引入全局组件 */
 import './globalComponents'
+/** 让网页根据设备dpr和宽度，利用viewport和html根元素的font-size配合rem来适配不同尺寸的移动端设备 */
+//import 'lib-flexible/flexible.js'
 
 import axios from 'axios'
 Vue.prototype.$axios = axios

@@ -1,0 +1,12 @@
+//package.json
+//用来
+,
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-pxtorem": {
+        "rootValue": 75, 
+        "propList":["*"]
+       }
+    }
+  }
