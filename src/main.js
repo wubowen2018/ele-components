@@ -10,7 +10,7 @@ import './globalComponents'
 
 import axios from 'axios'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/api'
+// axios.defaults.baseURL = '/api'
 
 Vue.use(ElementUi)
 Vue.config.productionTip = false

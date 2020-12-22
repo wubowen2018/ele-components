@@ -13,7 +13,9 @@ export default {
         }
     },
     mounted(){
-        
+        this.$axios.get('/api/info').then((res,err)=>{
+            console.log(res);
+        })
     }
 }
 </script>
