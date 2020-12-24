@@ -49,11 +49,11 @@
             <el-button 
               type="primary" 
               style="width: 100%" 
-              @click="getFair"
+              @click="getFair( memberForm.memList )"
             >GoDuch</el-button>
       </el-form-item>
-
     </el-form>
+
   </div>
 </template>
 
@@ -61,7 +61,7 @@
 export default {
   data () {
     let checkMoney = ( rule, value,callback ) => {
-      let reg = /\d+[\.]?\d+$/
+      let reg = /((^[1-9]\d*)|^0)(\.\d{0,2})?$/
       if ( !value ) {
         return callback( new Error('请输入支付金额'))
       }else {
@@ -86,7 +86,7 @@ export default {
         ],
         money: [{ validator: checkMoney, trigger: 'blur' }]
       },
-
+      radio:'',
       disabled: true,
       undisabled: false
     };
@@ -120,9 +120,9 @@ export default {
         item.money = ''
       });
     },
-    getFair(){
-      const memList = this.memberForm.memList
-      console.log(memList);
+    getFair(memList){
+      this.$emit('GoFairPage',memList);
+      //console.log(memList);
     }
 
   }
