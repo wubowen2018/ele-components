@@ -78,14 +78,14 @@ export default {
     return {
       memberForm: {
         memList: [
-          {name: '12', money: '12'},
-          {name: '12',money: '123'}
+          {name: '', money: ''},
+          {name: '',money: ''}
         ] 
       },
       rules: {
         name: [
           { required: true, message: '好友姓名不可为空', trigger: 'blur' },
-          {min: 2,max: 6,message: '好友姓名在2-6个字符之间',trigger: 'blur'}
+          {min: 1,max: 6,message: '好友姓名在2-6个字符之间',trigger: 'blur'}
         ],
         money: [{ validator: checkMoney, trigger: 'blur' }]
       },

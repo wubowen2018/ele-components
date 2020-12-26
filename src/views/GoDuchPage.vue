@@ -6,7 +6,6 @@
       @GoFairPage="GoFairPage"
       @handleErr="handleErr"
       >
-      
     </go-duch>
   </div>
 </template>
@@ -30,7 +29,7 @@ export default {
       });
     },
     handleErr(){
-      this.$message.error('some err')
+      this.$message.error("输入数据有误")
     }
   }
 }
