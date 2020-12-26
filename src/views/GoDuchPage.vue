@@ -4,6 +4,7 @@
     <go-duch
       class="content"
       @GoFairPage="GoFairPage"
+      @handleErr="handleErr"
       >
       
     </go-duch>
@@ -17,11 +18,8 @@ export default {
    
     }
   },
-
   components: {},
-
   computed: {},
-
   methods: {
     GoFairPage(memList){
       this.$router.push({
@@ -30,13 +28,15 @@ export default {
           memList:memList
         }
       });
-      //console.log(memList);
+    },
+    handleErr(){
+      this.$message.error('some err')
     }
   }
 }
 
 </script>
 <style lang="less" scoped>
-.wraper{width: 500px;text-align: center;position: relative;}
-.content{left:30px;position: absolute;}
+  .wraper{width: 500px;text-align: center;position: relative;}
+  .content{left:30px;position: absolute;}
 </style>

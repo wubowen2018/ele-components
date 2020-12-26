@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form :model="memberForm" :ref="memberForm" >
+    <el-form :model="memberForm" ref="memberForms" >
         <el-row :gutter="18" v-for="(item,index) in memberForm.memList" :key="index">
           <el-col :span="8">
             <el-form-item :prop="`memList.${index}.name`" :rules="rules.name">
@@ -28,6 +28,7 @@
 
       <el-form-item>
         <el-row :gutter="15">
+          <!-- 重置 -->
           <el-col :span="12">
             <el-button 
               type="primary" 
@@ -35,6 +36,7 @@
               @click="allReset"
             >Reset</el-button>
           </el-col>
+          <!-- 添加好友 -->
           <el-col :span="12">
             <el-button 
               style="width: 100%" 
@@ -45,6 +47,7 @@
         </el-row>
       </el-form-item>
 
+      <!-- 提交 -->
       <el-form-item>
             <el-button 
               type="primary" 
@@ -75,8 +78,8 @@ export default {
     return {
       memberForm: {
         memList: [
-          {name: '', money: ''},
-          {name: '',money: ''}
+          {name: '12', money: '12'},
+          {name: '12',money: '123'}
         ] 
       },
       rules: {
@@ -94,10 +97,7 @@ export default {
   props: {
     
   },
-  created() {
-    // this.memberForm = this.memForm
-    // console.log(this.memberForm);
-  },
+  created() {},
 
   methods: {
     delMem(index){
@@ -121,8 +121,13 @@ export default {
       });
     },
     getFair(memList){
-      this.$emit('GoFairPage',memList);
-      //console.log(memList);
+      this.$refs.memberForms.validate( (valid) =>{
+        if (valid){
+          this.$emit('GoFairPage',memList);
+        }else{
+          this.$emit('handleErr');
+        }
+      })
     }
 
   }
