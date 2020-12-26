@@ -1,8 +1,8 @@
 <template>
   <div class="wraper">
 		<div class="moneyThing" >
-			<span class="totalMoney">共消费{{ sum }}元</span>
-			<span class="averageMoney">平均消费{{ average }}元</span>
+			<span class="totalMoney">共消费{{ formatMoney(sum) }}元</span>
+			<span class="averageMoney">平均消费{{ formatMoney(average) }}元</span>
 		</div>
 
 		<div class="tipDiv">
@@ -73,6 +73,9 @@ export default {
 			return newArr.sort((e1,e2)=>{
 				return parseFloat(e1.money)  - parseFloat(e2.money) 
 			})
+		},
+		formatMoney(num) {
+    	return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=\B(\d{3})+$)/g, ','))
 		}
   },
   created() {
@@ -83,11 +86,11 @@ export default {
 
 		if (arrTmp.length === 2){
 			let dit = (average - arrTmp[0].money).toFixed(2) 
-				dit!==0 && payedArr.push({
-					payer:arrTmp[0].name,
-					rev: arrTmp[1].name,
-					dit: dit 
-				})
+			dit!==0 && payedArr.push({
+				payer:arrTmp[0].name,
+				rev: arrTmp[1].name,
+				dit: this.formatMoney(dit) 
+			})
 		} else {
 			let distributer =  arrTmp[0]
 			let distributerDit = average - distributer.money
@@ -96,12 +99,12 @@ export default {
 			for (let index = 0; index < arrTmp.length; index++) {
 				const element = arrTmp[index];
 				let ditTmp = (average - parseFloat(element.money)).toFixed(2)
-				Number(ditTmp) > 0 && payedArr.push({payer:element.name,rev:distributerName,dit: ditTmp })
-					Number(ditTmp) < 0 &&payedArr.push({ payer:distributerName,rev:element.name,dit: ditTmp.toString().replace("-","")})
+				Number(ditTmp) > 0 && payedArr.push({payer:element.name,rev:distributerName,dit: this.formatMoney(ditTmp) })
+					Number(ditTmp) < 0 &&payedArr.push({ payer:distributerName,rev:element.name,dit: this.formatMoney(ditTmp.toString().replace("-",""))})
 			}
 		}
 		this.payArr = payedArr
-		console.log(payedArr);
+		// console.log(payedArr);
   },
 };
 </script>
@@ -123,8 +126,8 @@ export default {
 		color: #595959;
 	}
 	.totalMoney,.averageMoney{
-		width: 100px;
-		margin: 50px;
+		width: 200px;
+		margin-left: 50px;
 	}
 	.JustAA{
 		width: 100%;
