@@ -75,7 +75,7 @@ export default {
 			})
 		},
 		formatMoney(num) {
-    	return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=\B(\d{3})+$)/g, ','))
+    		return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=\B(\d{3})+$)/g, ','))
 		}
   },
   created() {
@@ -100,7 +100,7 @@ export default {
 				const element = arrTmp[index];
 				let ditTmp = (average - parseFloat(element.money)).toFixed(2)
 				Number(ditTmp) > 0 && payedArr.push({payer:element.name,rev:distributerName,dit: this.formatMoney(ditTmp) })
-					Number(ditTmp) < 0 &&payedArr.push({ payer:distributerName,rev:element.name,dit: this.formatMoney(ditTmp.toString().replace("-",""))})
+				Number(ditTmp) < 0 &&payedArr.push({ payer:distributerName,rev:element.name,dit: this.formatMoney(ditTmp.toString().replace("-",""))})
 			}
 		}
 		this.payArr = payedArr
