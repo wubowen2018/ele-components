@@ -8,6 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    redirect: '/step',
     component: Home
   },
   {
@@ -29,6 +30,11 @@ const routes = [
     path: '/test',
     name: 'test',
     component: () => import('../views/Test.vue')
+  },
+  {
+    path: '/step',
+    name: 'step',
+    component: () => import('../views/mangda.vue')
   },
   {
     path: '/goduch',
